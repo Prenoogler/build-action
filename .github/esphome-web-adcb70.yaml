@@ -1,0 +1,87 @@
+esphome:
+  name: esphome-web-adcb70
+  friendly_name: pc button
+
+esp32:
+  board: esp32doit-devkit-v1
+
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "TM1FsJpe++Pd3IhLF5BekYe2KNIp8F+lcMe4pj8uWF4="
+
+ota:
+
+
+wifi:
+  ssid: "MTK_CHEETAH_AP_2.4G"
+  password: "1234567890"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esphome-Web-Adcb70"
+    password: "CpIRd0rsALd4"
+
+captive_portal:
+
+
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    update_interval: 60s
+
+switch:
+  - platform: gpio
+    pin: GPIO13
+    id: power_pin
+    internal: True
+
+  - platform: gpio
+    pin: GPIO14
+    id: reset_pin
+    internal: true
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO18
+    id: pc_power_sensor
+    name: "Power State"
+    device_class: power
+    icon: "mdi:desktop-classic"
+
+
+button:
+  - platform: template
+    name: "Power Button"
+    id: power_button
+    icon: "mdi:power-standby"
+    on_press:
+      then:
+        - switch.turn_on: power_pin
+        - delay: 300ms
+        - switch.turn_off: power_pin
+
+  - platform: template
+    name: "Force Power Off"
+    id: force_power_off
+    icon: "mdi:power-plug-off"
+    on_press:
+      then:
+        - switch.turn_on: power_pin
+        - delay: 5000ms
+        - switch.turn_off: power_pin
+
+  - platform: template
+    name: "Reset Button"
+    id: reset_button
+    icon: "mdi:restart"
+    on_press:
+      then:
+        - switch.turn_on: reset_pin
+        - delay: 300ms
+        - switch.turn_off: reset_pin
+    
