@@ -1,11 +1,18 @@
-name: build-process
-on: workflow_dispatch
-jobs: 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: esphome/build-action@v2.0.0
-      id: esphome-build
-      with:
-        yaml_file: .github/esphome-web-adcb70.yaml
+name: build-process  
+on: workflow_dispatch  
+jobs:  
+  build:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v3  
+      - uses: esphome/build-action@v2.0.0  
+        id: esphome-build  
+        with:  
+          yaml_file: .github/esphome-web-adcb70.yaml  
+        
+      # 添加一个步骤来上传生成的文件作为工件  
+      - name: Upload artifact  
+        uses: actions/upload-artifact@v3  
+        with:  
+          name: esphome-built-files # 工件的名字  
+          path: .github # 要上传的文件或目录的路径
