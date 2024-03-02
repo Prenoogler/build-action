@@ -1,6 +1,6 @@
 esphome:  
   name: esphome-web-adcb70  
-  friendly_name: PC-Button
+  friendly_name: PC-Button 
   
 esp32:  
   board: esp32doit-devkit-v1  
@@ -50,7 +50,7 @@ binary_sensor:
       number: GPIO18
       mode:
         input: true
-        pullup: true
+        pulldown: true
 
 
   
