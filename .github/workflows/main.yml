@@ -12,7 +12,7 @@ jobs:
         
       # 添加一个步骤来上传生成的文件作为工件  
       - name: Upload artifact  
-        uses: actions/upload-artifact@v3  
+        uses: actions/upload-artifact@v4
         with:  
           name: esphome-built-files # 工件的名字  
           path: .github # 要上传的文件或目录的路径
