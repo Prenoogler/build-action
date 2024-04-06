@@ -8,7 +8,7 @@ jobs:
       - uses: esphome/build-action@v2.0.0  
         id: esphome-build  
         with:  
-          yaml_file: .github/esphome-web-adcb70.yaml  
+          yaml_file: .github/ld2410.yaml
         
       # 添加一个步骤来上传生成的文件作为工件  
       - name: Upload artifact  
