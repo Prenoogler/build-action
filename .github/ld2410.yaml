@@ -33,28 +33,6 @@ uart:
   parity: NONE
   stop_bits: 1
 
-ld2410:
-  timeout: 5s
-  max_move_distance : 6m
-  max_still_distance: 6m
-  g0_move_threshold: 27
-  g0_still_threshold: 3
-  g1_move_threshold: 16
-  g1_still_threshold: 3
-  g2_move_threshold: 8
-  g2_still_threshold: 6
-  g3_move_threshold: 10
-  g3_still_threshold: 7
-  g4_move_threshold: 9
-  g4_still_threshold: 5
-  g5_move_threshold: 7
-  g5_still_threshold: 6
-  g6_move_threshold: 7
-  g6_still_threshold: 6
-  g7_move_threshold: 9
-  g7_still_threshold: 6
-  g8_move_threshold: 8
-  g8_still_threshold: 5
 
 sensor:
   - platform: ld2410
