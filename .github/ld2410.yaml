@@ -33,6 +33,7 @@ uart:
   parity: NONE
   stop_bits: 1
 
+ld2410:
 
 sensor:
   - platform: ld2410
