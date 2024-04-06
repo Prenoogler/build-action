@@ -1,0 +1,79 @@
+
+    
+esphome:
+  name: ld2410 #自己設定name
+  platform: ESP32  
+  board: esp32doit-devkit-v1 #這邊是設定自己使用的晶片
+
+
+wifi:
+  ssid: "MTK_CHEETAH_AP_2.4G"
+  password: "1234567890"
+  
+  ap:
+    ssid: "ESP32-LD2410" #這邊是設置ap，如果沒有連線成功的話
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+
+# Example configuration entry
+uart:
+  id: uart99
+  tx_pin: GPIO13
+  rx_pin: GPIO14
+  baud_rate: 256000
+  parity: NONE
+  stop_bits: 1
+
+ld2410:
+  timeout: 5s
+  max_move_distance : 6m
+  max_still_distance: 6m
+  g0_move_threshold: 27
+  g0_still_threshold: 3
+  g1_move_threshold: 16
+  g1_still_threshold: 3
+  g2_move_threshold: 8
+  g2_still_threshold: 6
+  g3_move_threshold: 10
+  g3_still_threshold: 7
+  g4_move_threshold: 9
+  g4_still_threshold: 5
+  g5_move_threshold: 7
+  g5_still_threshold: 6
+  g6_move_threshold: 7
+  g6_still_threshold: 6
+  g7_move_threshold: 9
+  g7_still_threshold: 6
+  g8_move_threshold: 8
+  g8_still_threshold: 5
+
+sensor:
+  - platform: ld2410
+    moving_distance:
+      name : Moving Distance
+    still_distance:
+      name: Still Distance
+    moving_energy:
+      name: Move Energy
+    still_energy:
+      name: Still Energy
+    detection_distance:
+      name: Detection Distance
+
+binary_sensor:
+  - platform: ld2410
+    has_target:
+      name: Presence
+    has_moving_target:
+      name: Moving Target
+    has_still_target:
+      name: Still Target
