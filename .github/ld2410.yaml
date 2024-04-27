@@ -35,6 +35,13 @@ uart:
 
 ld2410:
 
+switch:
+  - platform: ld2410
+    engineering_mode:
+      name: "engineering mode"
+    bluetooth:
+      name: "control bluetooth"
+
 
 sensor:
   - platform: ld2410
